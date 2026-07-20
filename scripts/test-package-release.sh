@@ -28,6 +28,11 @@ bundle_version="$(plutil -extract CFBundleShortVersionString raw "$PACKAGE/Codex
 [[ -x "$PACKAGE/Support/install.sh" ]] || fail "support installer is missing or not executable"
 [[ -x "$PACKAGE/Support/uninstall.sh" ]] || fail "support uninstaller is missing or not executable"
 [[ -x "$PACKAGE/Support/login-item.sh" ]] || fail "login-item helper is missing or not executable"
+PET_RESOURCES="$PACKAGE/Codex Pet Quota.app/Contents/Resources/PetAssets/pixel-code-companion"
+[[ -f "$PET_RESOURCES/spritesheet.webp" ]] || fail "Codex-compatible WebP spritesheet is missing"
+[[ ! -e "$PET_RESOURCES/spritesheet.png" ]] || fail "PNG spritesheet must not be packaged for Codex pets"
+sprite_path="$(plutil -extract spritesheetPath raw "$PET_RESOURCES/pet.json")"
+[[ "$sprite_path" == "spritesheet.webp" ]] || fail "pet.json must reference spritesheet.webp"
 bash -n "$PACKAGE/安装.command" "$PACKAGE/卸载.command" \
   "$PACKAGE/Support/install.sh" "$PACKAGE/Support/uninstall.sh" "$PACKAGE/Support/login-item.sh"
 

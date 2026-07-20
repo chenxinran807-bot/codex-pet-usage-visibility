@@ -28,7 +28,7 @@ BACKUP_COUNTER=0
 [[ "$SOURCE_APP" == /* && "$SOURCE_PET" == /* ]] || { echo "Source paths must be absolute." >&2; exit 1; }
 [[ ! -L "$SOURCE_APP" && -d "$SOURCE_APP" ]] || { echo "Missing or unsafe release app; run scripts/build-release.sh first." >&2; exit 1; }
 [[ ! -L "$SOURCE_PET" ]] || { echo "Refusing symlink pet source: $SOURCE_PET" >&2; exit 1; }
-[[ -f "$SOURCE_PET/pet.json" && -f "$SOURCE_PET/spritesheet.png" ]] || { echo "Pet asset is incomplete." >&2; exit 1; }
+[[ -f "$SOURCE_PET/pet.json" && -f "$SOURCE_PET/spritesheet.webp" ]] || { echo "Pet asset is incomplete." >&2; exit 1; }
 
 source_app_identifier="$(plutil -extract CFBundleIdentifier raw "$SOURCE_APP/Contents/Info.plist" 2>/dev/null || true)"
 [[ "$source_app_identifier" == "com.chenxinran.codexpetquota" ]] || { echo "Release app has an unexpected bundle identifier." >&2; exit 1; }

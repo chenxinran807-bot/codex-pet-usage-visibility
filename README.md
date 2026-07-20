@@ -79,7 +79,7 @@ scripts/uninstall.sh
 
 ### 检测不到桌宠
 
-确认桌宠目录中同时存在 `pet.json` 和 `spritesheet.png`，然后在 Codex 中重新选择桌宠。桌宠重新被识别后，面板会继续使用已保存的相对位置跟随；双击面板可恢复默认贴边位置。
+确认桌宠目录中同时存在 `pet.json` 和 `spritesheet.webp`，然后在 Codex 中重新选择桌宠。桌宠重新被识别后，面板会继续使用已保存的相对位置跟随；双击面板可恢复默认贴边位置。
 
 ### App Server 协议变化
 
